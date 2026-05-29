@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io('https://duess-server.onrender.com');
 
 // DOM Elements
 const lobbyContainer = document.getElementById('lobby-container');
