@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="app">
         <!-- Lobby View -->
@@ -15,7 +17,8 @@
             <h1 class="logo">Duess</h1>
             <p class="subtitle">Draw, Guess, and Win!</p>
             <div class="input-group">
-                <input type="text" id="username-input" placeholder="Enter your username" autocomplete="off" maxlength="15">
+                <input type="text" id="username-input" placeholder="Enter your username" autocomplete="off"
+                    maxlength="15">
             </div>
             <div class="input-group">
                 <input type="text" id="room-input" placeholder="Enter room ID" autocomplete="off" maxlength="10">
@@ -42,7 +45,7 @@
                 <!-- Main Canvas Area -->
                 <div class="canvas-area glass-inner">
                     <canvas id="drawing-canvas" width="800" height="600"></canvas>
-                    
+
                     <!-- Overlay for choosing word or round end -->
                     <div id="game-overlay" class="overlay hidden">
                         <h2 id="overlay-title">Choose a Word</h2>
@@ -71,7 +74,8 @@
                     <form id="chat-form" class="chat-form">
                         <input type="text" id="chat-input" placeholder="Type your guess here..." autocomplete="off">
                         <button type="submit" class="primary-btn small">Send</button>
-                        <button type="button" id="hint-btn" class="secondary-btn small hidden" title="Watch Ad for Hint">💡</button>
+                        <button type="button" id="hint-btn" class="secondary-btn small hidden"
+                            title="Watch Ad for Hint">💡</button>
                     </form>
                 </div>
             </div>
@@ -79,10 +83,11 @@
     </div>
 
     <!-- Socket.io -->
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
     <!-- CrazyGames SDK (v3) -->
     <script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
     <!-- Main App Logic -->
     <script src="main.js"></script>
 </body>
+
 </html>
