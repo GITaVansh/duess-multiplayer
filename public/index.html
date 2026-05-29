@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duess - Multiplayer Drawing Game</title>
+    <!-- Modern font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Lobby View -->
+        <div id="lobby-container" class="glass-panel active">
+            <h1 class="logo">Duess</h1>
+            <p class="subtitle">Draw, Guess, and Win!</p>
+            <div class="input-group">
+                <input type="text" id="username-input" placeholder="Enter your username" autocomplete="off" maxlength="15">
+            </div>
+            <div class="input-group">
+                <input type="text" id="room-input" placeholder="Enter room ID" autocomplete="off" maxlength="10">
+            </div>
+            <button id="join-btn" class="primary-btn">Join Game</button>
+            <div id="lobby-messages" class="messages-area"></div>
+        </div>
+
+        <!-- Game View -->
+        <div id="game-container" class="glass-panel hidden">
+            <!-- Top Bar: Timer, Word Hint, Settings -->
+            <div class="top-bar">
+                <div class="timer" id="timer-display">60</div>
+                <div class="word-hint" id="word-hint-display">Waiting...</div>
+                <div class="round-info" id="round-info">Round: 1/3</div>
+            </div>
+
+            <div class="game-content">
+                <!-- Players Sidebar -->
+                <div class="players-sidebar glass-inner" id="players-list">
+                    <!-- Players will be injected here -->
+                </div>
+
+                <!-- Main Canvas Area -->
+                <div class="canvas-area glass-inner">
+                    <canvas id="drawing-canvas" width="800" height="600"></canvas>
+                    
+                    <!-- Overlay for choosing word or round end -->
+                    <div id="game-overlay" class="overlay hidden">
+                        <h2 id="overlay-title">Choose a Word</h2>
+                        <div id="word-choices" class="word-choices hidden">
+                            <!-- Word choices injected here -->
+                        </div>
+                        <p id="overlay-message"></p>
+                    </div>
+
+                    <!-- Toolbox (Only visible for drawer) -->
+                    <div id="toolbox" class="toolbox hidden">
+                        <input type="color" id="color-picker" value="#000000" title="Choose Color">
+                        <input type="range" id="brush-size" min="1" max="20" value="5" title="Brush Size">
+                        <button id="eraser-btn" class="tool-btn" title="Eraser">🧹</button>
+                        <button id="fill-btn" class="tool-btn" title="Fill Bucket">🪣</button>
+                        <button id="undo-btn" class="tool-btn" title="Undo">↩️</button>
+                        <button id="clear-btn" class="tool-btn">🗑️</button>
+                    </div>
+                </div>
+
+                <!-- Chat / Guessing Area -->
+                <div class="chat-area glass-inner">
+                    <div id="chat-messages" class="messages-area">
+                        <!-- Chat messages injected here -->
+                    </div>
+                    <form id="chat-form" class="chat-form">
+                        <input type="text" id="chat-input" placeholder="Type your guess here..." autocomplete="off">
+                        <button type="submit" class="primary-btn small">Send</button>
+                        <button type="button" id="hint-btn" class="secondary-btn small hidden" title="Watch Ad for Hint">💡</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- CrazyGames SDK (v3) -->
+    <script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+    <!-- Main App Logic -->
+    <script src="main.js"></script>
+</body>
+</html>
